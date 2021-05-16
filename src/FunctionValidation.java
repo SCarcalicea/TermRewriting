@@ -15,14 +15,16 @@ public class FunctionValidation {
 		
 		// Sample data
 		String f1 = "f(x,f(x))"; // Incorect
-		String f2 = "f(e,i(f(x,y)))"; // Correct
+		String f2 = "f(e,i(f(x,e)))"; // Correct
 		String f3 = "f(g(x,y,z),i(f(g(i(e),x,y),e)))"; // Correct
 		
 		// Input data
 		String input = f3;
+		System.out.println("Input is: " + input);
 		
 		// Symbol/functions definition
 		String symbols = "g/3,f/2,i/1,e/0";
+		System.out.println("Function definition: " + symbols);
 		
 		// Format functions to a data structure that we can use
 		StringTokenizer tokens = new StringTokenizer(symbols, ",");
@@ -55,9 +57,10 @@ public class FunctionValidation {
 			System.out.println("Invalid input...");
 			System.exit(-1);
 		}
+		System.out.println("Valid input");
 		
 		// Print out the nodes only
-		onlyNodes.forEach(System.out::println);
+//		onlyNodes.forEach(System.out::println);
 		
 		// Extract all the terms
 		for (int i = 0; i < onlyNodes.size(); i++) {
@@ -113,6 +116,8 @@ public class FunctionValidation {
 		
 		
 		System.out.println(primaryNodes);
+		
+		System.out.println("Terms: ");
 		System.out.println(terms);
 		System.out.println(operator.display());
 	}

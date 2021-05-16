@@ -1,6 +1,7 @@
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -26,7 +27,7 @@ public class Graph {
 	}
 
 	public LinkedList<Node> getRelations(Node forNode) {
-		return edges.get(forNode);
+		return edges.get(forNode) == null ? new LinkedList<>() : edges.get(forNode);
 	}
 	
 	private void validateEdge(Node fromNode) {
@@ -56,7 +57,10 @@ public class Graph {
 	}
 	
 	public Node getStartingPoint() {
-		return edges.keySet().iterator().next();
+		
+		Iterator<Node> it = edges.keySet().iterator();
+		
+		return it.hasNext() ? it.next() : null;
 	}
 	
 	public Set<Node> getStartingPoints() {

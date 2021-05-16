@@ -5,10 +5,15 @@ public class Node implements Comparable<Node> {
 	private boolean visited = false;
 	private int nodeNumber = 0;
 	private String value = "";
+	private String order = "";
 	
 	public Node(String value, Integer nodeNumber) {
 		this.value = value;
 		this.nodeNumber = nodeNumber;
+	}
+	
+	public void setOrder(String order) {
+		this.order = order;
 	}
 	
 	public boolean isVisited() {
